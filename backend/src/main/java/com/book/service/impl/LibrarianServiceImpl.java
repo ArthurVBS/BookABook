@@ -1,14 +1,13 @@
-package com.book.book.service;
+package com.book.service.impl;
 
-import com.book.book.dto.LibrarianDTO;
-import com.book.book.entity.Librarian;
-import com.book.book.exception.AlreadyExistsException;
-import com.book.book.exception.NotFoundException;
-import com.book.book.repository.LibrarianRepository;
+import com.book.dto.LibrarianDTO;
+import com.book.entity.Librarian;
+import com.book.exception.AlreadyExistsException;
+import com.book.exception.NotFoundException;
+import com.book.repository.LibrarianRepository;
+import com.book.service.ILibrarianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class LibrarianServiceImpl implements ILibrarianService {

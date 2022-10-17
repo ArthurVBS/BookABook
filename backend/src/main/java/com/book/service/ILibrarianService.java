@@ -1,8 +1,7 @@
-package com.book.book.service;
+package com.book.service;
 
-import com.book.book.dto.LibrarianDTO;
+import com.book.dto.LibrarianDTO;
 
-import java.util.List;
 
 public interface ILibrarianService {
 

@@ -1,6 +1,6 @@
-package com.book.book.dto;
+package com.book.dto;
 
-import com.book.book.entity.Librarian;
+import com.book.entity.Librarian;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

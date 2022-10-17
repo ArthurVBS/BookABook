@@ -1,4 +1,4 @@
-package com.book.book.entity;
+package com.book.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_librarian")
-public class Librarian implements Serializable {
+@Table(name = "tb_book")
+public class Book implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +20,11 @@ public class Librarian implements Serializable {
 
   @Column(nullable = false, length = 150, unique = true)
   private String name;
+
+  @Column(nullable = false, length = 150)
+  private String author;
+
+  @Column(nullable = false)
+  private Long year;
 
 }

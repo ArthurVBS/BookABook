@@ -1,9 +1,9 @@
-package com.book.book.controller;
+package com.book.controller;
 
-import com.book.book.dto.LibrarianDTO;
-import com.book.book.exception.AlreadyExistsException;
-import com.book.book.exception.NotFoundException;
-import com.book.book.service.LibrarianServiceImpl;
+import com.book.dto.BookDTO;
+import com.book.exception.AlreadyExistsException;
+import com.book.exception.NotFoundException;
+import com.book.service.impl.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,24 +12,33 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/librarian")
-public class LibrarianController {
+@RequestMapping("/book")
+public class BookController {
 
   @Autowired
-  private LibrarianServiceImpl service;
+  private BookServiceImpl service;
 
   @GetMapping(value = "/{id}")
-  public LibrarianDTO getById(@PathVariable Long id){
+  public BookDTO getById(@PathVariable Long id){
     return service.getById(id);
+  }
+
+  @GetMapping(value = "")
+  public BookDTO getByAuthorAndName(
+          @RequestParam(name = "author", defaultValue = "") String author,
+          @RequestParam(name = "name", defaultValue = "") String name
+  ){
+    return service.getByAuthorAndName(author, name);
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<String> create(@RequestBody LibrarianDTO librarianDTO){
-    service.create(librarianDTO);
+  public ResponseEntity<String> create (@RequestBody BookDTO bookDTO){
+    service.create(bookDTO);
     return ResponseEntity.ok("Created");
   }
 
@@ -53,7 +62,7 @@ public class LibrarianController {
   public Map<String, String> handleNotFoundException() {
     Map<String, String> error = new HashMap<>();
 
-    error.put("Librarian", "Not found");
+    error.put("Book", "Not found");
 
     return error;
   }
@@ -63,7 +72,7 @@ public class LibrarianController {
   public Map<String, String> handleAlreadyExistsException() {
     Map<String, String> error = new HashMap<>();
 
-    error.put("Librarian", "Already exists");
+    error.put("Book", "Already exists");
 
     return error;
   }
