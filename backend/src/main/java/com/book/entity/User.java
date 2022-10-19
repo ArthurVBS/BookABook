@@ -25,6 +25,6 @@ public class User implements Serializable {
   private String name;
 
   @Column(nullable = false, length = 30)
-  private String privilege;
+  private String access;
 
 }

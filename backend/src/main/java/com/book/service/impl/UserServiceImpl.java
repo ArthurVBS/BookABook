@@ -23,7 +23,7 @@ public class UserServiceImpl implements IUserService {
       User user = new User();
       user.setRegistration(userDTO.getRegistration());
       user.setName(userDTO.getName());
-      user.setPrivilege(user.getPrivilege());
+      user.setAccess(userDTO.getAccess());
       repository.save(user);
 
     } catch (Exception err) {
