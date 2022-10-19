@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IBookService {
 
-  BookDTO create (BookDTO bookDTO);
+  void create (BookDTO bookDTO);
 
   BookDTO getById (Long id);
 

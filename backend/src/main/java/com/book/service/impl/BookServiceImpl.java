@@ -20,16 +20,15 @@ public class BookServiceImpl implements IBookService {
   private BookRepository repository;
 
   @Override
-  public BookDTO create(BookDTO bookDTO) {
+  public void create(BookDTO bookDTO) {
     try {
       Book book = new Book();
       book.setName(bookDTO.getName());
       book.setAuthor(bookDTO.getAuthor());
       book.setGenre(bookDTO.getGenre());
       book.setYear(bookDTO.getYear());
-      Book result = repository.save(book);
+      repository.save(book);
 
-      return new BookDTO(result);
     } catch (Exception err){
       throw new AlreadyExistsException();
     }
@@ -64,7 +63,6 @@ public class BookServiceImpl implements IBookService {
     }
 
     Book result = repository.findByName(name);
-
     return new BookDTO(result);
   }
 
