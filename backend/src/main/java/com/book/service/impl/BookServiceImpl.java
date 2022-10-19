@@ -9,6 +9,8 @@ import com.book.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -23,6 +25,7 @@ public class BookServiceImpl implements IBookService {
       Book book = new Book();
       book.setName(bookDTO.getName());
       book.setAuthor(bookDTO.getAuthor());
+      book.setGenre(bookDTO.getGenre());
       book.setYear(bookDTO.getYear());
       Book result = repository.save(book);
 
@@ -43,17 +46,50 @@ public class BookServiceImpl implements IBookService {
   }
 
   @Override
-  public BookDTO getByAuthorAndName(String author, String name) {
-    if(Objects.equals(author, "") || Objects.equals(name, "")){
+  public List<BookDTO> getAll() {
+    List<Book> result = repository.findAll();
+    List<BookDTO> toReturn = new ArrayList<>();
+
+    result.forEach(myBook -> {
+      toReturn.add(new BookDTO(myBook));
+    });
+
+    return toReturn;
+  }
+
+  @Override
+  public BookDTO getByName(String name) {
+    if(Objects.equals(name, "")){
       throw new NotFoundException();
     }
 
-    Book result = repository.findByAuthorAndName(author, name);
-
-    if (result == null){
-      throw new NotFoundException();
-    }
+    Book result = repository.findByName(name);
 
     return new BookDTO(result);
   }
+
+  @Override
+  public List<BookDTO> getByAuthor(String author) {
+    List<Book> result = repository.findByAuthor(author);
+    List<BookDTO> toReturn = new ArrayList<>();
+
+    result.forEach(myBook -> {
+      toReturn.add(new BookDTO(myBook));
+    });
+
+    return toReturn;
+  }
+
+  @Override
+  public List<BookDTO> getByGenre(String genre) {
+    List<Book> result = repository.findByGenre(genre);
+    List<BookDTO> toReturn = new ArrayList<>();
+
+    result.forEach(myBook -> {
+      toReturn.add(new BookDTO(myBook));
+    });
+
+    return toReturn;
+  }
+
 }

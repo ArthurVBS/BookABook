@@ -16,12 +16,15 @@ public class BookDTO {
 
   private String author;
 
+  private String genre;
+
   private Long year;
 
   public BookDTO(Book book){
     this.id = book.getId();
     this.name = book.getName();
     this.author = book.getAuthor();
+    this.genre = book.getGenre();
     this.year = book.getYear();
   }
 

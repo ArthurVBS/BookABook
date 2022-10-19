@@ -10,6 +10,12 @@ public interface IBookService {
 
   BookDTO getById (Long id);
 
-  BookDTO getByAuthorAndName (String author, String name);
+  List<BookDTO> getAll();
+
+  BookDTO getByName(String name);
+
+  List<BookDTO> getByAuthor(String author);
+
+  List<BookDTO> getByGenre(String genre);
 
 }

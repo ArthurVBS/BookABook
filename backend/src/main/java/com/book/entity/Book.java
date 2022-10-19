@@ -24,6 +24,9 @@ public class Book implements Serializable {
   @Column(nullable = false, length = 150)
   private String author;
 
+  @Column(nullable = false, length = 150)
+  private String genre;
+
   @Column(nullable = false)
   private Long year;
 

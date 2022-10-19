@@ -28,11 +28,23 @@ public class BookController {
   }
 
   @GetMapping(value = "")
-  public BookDTO getByAuthorAndName(
-          @RequestParam(name = "author", defaultValue = "") String author,
-          @RequestParam(name = "name", defaultValue = "") String name
-  ){
-    return service.getByAuthorAndName(author, name);
+  public List<BookDTO> getAll(){
+    return service.getAll();
+  }
+
+  @GetMapping(value = "/name/{name}")
+  public BookDTO getByName(@PathVariable String name){
+    return service.getByName(name);
+  }
+
+  @GetMapping(value = "/author/{author}")
+  public List<BookDTO> getByAuthor(@PathVariable String author){
+    return service.getByAuthor(author);
+  }
+
+  @GetMapping(value = "/genre/{genre}")
+  public List<BookDTO> getByGenre(@PathVariable String genre){
+    return service.getByGenre(genre);
   }
 
   @PostMapping
