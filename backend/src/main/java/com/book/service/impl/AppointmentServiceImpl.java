@@ -11,6 +11,9 @@ import com.book.service.IAppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AppointmentServiceImpl implements IAppointmentService {
 
@@ -59,5 +62,37 @@ public class AppointmentServiceImpl implements IAppointmentService {
   public AppointmentDTO getByUserIdAndBookId(Long user_id, Long book_id) {
     Appointment result = appointmentRepository.findByUserIdAndBookId(user_id, book_id);
     return new AppointmentDTO(result);
+  }
+
+  @Override
+  public List<AppointmentDTO> getByUserId(Long user_id) {
+    if (appointmentRepository.findByUserId(user_id).isEmpty()){
+      throw new NotFoundException();
+    }
+
+    List<Appointment> result = appointmentRepository.findByUserId(user_id);
+    List<AppointmentDTO> toReturn = new ArrayList<>();
+
+    result.forEach(myAppointment -> {
+      toReturn.add(new AppointmentDTO(myAppointment));
+    });
+
+    return toReturn;
+  }
+
+  @Override
+  public List<AppointmentDTO> getByBookId(Long book_id) {
+    if (appointmentRepository.findByBookId(book_id).isEmpty()){
+      throw new NotFoundException();
+    }
+
+    List<Appointment> result = appointmentRepository.findByBookId(book_id);
+    List<AppointmentDTO> toReturn = new ArrayList<>();
+
+    result.forEach(myAppointment -> {
+      toReturn.add(new AppointmentDTO(myAppointment));
+    });
+
+    return toReturn;
   }
 }

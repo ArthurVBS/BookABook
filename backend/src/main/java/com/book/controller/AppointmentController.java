@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -21,12 +22,22 @@ public class AppointmentController {
   @Autowired
   private AppointmentServiceImpl service;
 
-  @GetMapping("/{id}")
+  @GetMapping(value = "/{id}")
   public AppointmentDTO getById(@PathVariable Long id){
    return service.getById(id);
   }
 
-  @GetMapping("")
+  @GetMapping(value = "/user_id/{user_id}")
+  public List<AppointmentDTO> getByUserId(@PathVariable Long user_id){
+    return service.getByUserId(user_id);
+  }
+
+  @GetMapping(value = "/book_id/{book_id}")
+  public List<AppointmentDTO> getByBookId(@PathVariable Long book_id){
+    return service.getByBookId(book_id);
+  }
+
+  @GetMapping(value = "")
   public AppointmentDTO getByUserIdAndBookId(@RequestParam Long user_id, @RequestParam Long book_id){
     return service.getByUserIdAndBookId(user_id, book_id);
   }
