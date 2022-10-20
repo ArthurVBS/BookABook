@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -29,5 +30,8 @@ public class Book implements Serializable {
 
   @Column(nullable = false)
   private Long year;
+
+  @OneToMany(mappedBy = "book")
+  private Set<Appointment> appointment;
 
 }
