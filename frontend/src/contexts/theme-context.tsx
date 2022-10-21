@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
-import dark from '../styles/theme/dark'
+import light from '../styles/theme/light'
 
 type themeContextType = {
   theme: DefaultTheme
@@ -12,7 +12,7 @@ type themeContextProps = {
 }
 
 const initialValue = {
-  theme: dark,
+  theme: light,
   setTheme: () => {},
 }
 

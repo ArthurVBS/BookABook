@@ -1,13 +1,16 @@
 import type { AppProps } from 'next/app'
+import GlobalStyles from '../src/styles/global'
 
 import { ThemeContextProvider } from '../src/contexts/theme-context'
-import GlobalStyles from '../src/styles/global'
+import { NavbarContextProvider } from '../src/contexts/navbar-context'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeContextProvider>
-      <GlobalStyles />
-      <Component {...pageProps} />
+      <NavbarContextProvider>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </NavbarContextProvider>
     </ThemeContextProvider>
   )
 }

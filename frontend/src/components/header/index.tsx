@@ -1,13 +1,14 @@
 import React from 'react'
-import Nav from '../nav'
+import { Container, LogoTitle } from './styles'
+
 import ToggleTheme from '../toggle-theme'
-import { Container } from './styles'
+import ToggleNavbar from '../toggle-navbar'
 
 const Header: React.FC = () => {
   return (
     <Container>
-      <h2>Well, hello there!</h2>
-      <Nav />
+      <ToggleNavbar />
+      <LogoTitle>Book - a - Book</LogoTitle>
       <ToggleTheme />
     </Container>
   )
