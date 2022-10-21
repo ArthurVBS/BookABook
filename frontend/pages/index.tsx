@@ -8,6 +8,7 @@ const Home: NextPage = () => {
     <>
       <Head title="BaB | Book a Book" />
       <Header />
+      <p>HomePage</p>
     </>
   )
 }

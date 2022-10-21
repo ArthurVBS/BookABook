@@ -1,8 +1,9 @@
 import React from 'react'
+import { Container } from './styles'
+
 import { useTheme } from '../../contexts/theme-context'
 import dark from '../../styles/theme/dark'
 import light from '../../styles/theme/light'
-import { Container } from './styles'
 
 const ToggleTheme: React.FC = () => {
   const { theme, setTheme } = useTheme()
