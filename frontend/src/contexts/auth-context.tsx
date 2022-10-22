@@ -1,15 +1,9 @@
 import Router from 'next/router'
-
 import { createContext, ReactNode, useContext } from 'react'
+
 import usePersistedState from '../utils/usePersistedState'
 import { loginUser } from '../services/api'
-
-interface IUser {
-  id?: number
-  registration?: string
-  name?: string
-  access?: string
-}
+import { UserType } from '../types/user'
 
 interface IUserData {
   id: number
@@ -20,7 +14,7 @@ interface IUserData {
 }
 
 type authContextType = {
-  user: IUser
+  user: UserType
   login: (registration: string, password: string) => any
   logout: () => void
 }
