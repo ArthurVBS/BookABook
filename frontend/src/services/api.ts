@@ -5,6 +5,8 @@ export const api = axios.create({
   baseURL: BASE_URL,
 })
 
-export const login = async (registration: string) => {
-  return api.get(`/user/registration/${registration}`).catch(e => null)
+export const loginUser = async (registration: string, password: string) => {
+  return api
+    .get(`/user?registration=${registration}&password=${password}`)
+    .catch(err => null)
 }

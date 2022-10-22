@@ -3,14 +3,17 @@ import GlobalStyles from '../src/styles/global'
 
 import { ThemeContextProvider } from '../src/contexts/theme-context'
 import { NavbarContextProvider } from '../src/contexts/navbar-context'
+import { AuthContextProvider } from '../src/contexts/auth-context'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeContextProvider>
-      <NavbarContextProvider>
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </NavbarContextProvider>
+      <AuthContextProvider>
+        <NavbarContextProvider>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </NavbarContextProvider>
+      </AuthContextProvider>
     </ThemeContextProvider>
   )
 }
