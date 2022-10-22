@@ -5,5 +5,6 @@ export default {
     secondary: '#918BBF',
     background: '#181718',
     text: '#F2ECFF',
+    white: '#F2ECFF',
   },
 }

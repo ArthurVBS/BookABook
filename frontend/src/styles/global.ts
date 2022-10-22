@@ -46,4 +46,10 @@ export default createGlobalStyle`
     min-height: 100vh;
     font-family: 'Space Grotesk', sans-serif;
   }
+
+  #__next{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 `

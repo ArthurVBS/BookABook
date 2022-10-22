@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import Head from '../../src/components/head'
 import Header from '../../src/components/header'
 import Navbar from '../../src/components/navbar'
+import LoginPageContent from '../../src/pages/login'
 
 const LoginPage: NextPage = () => {
   return (
@@ -10,7 +11,7 @@ const LoginPage: NextPage = () => {
       <Head title="BaB | Login" />
       <Header />
       <Navbar />
-      <p>LoginPage</p>
+      <LoginPageContent />
     </>
   )
 }
