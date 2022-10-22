@@ -36,6 +36,14 @@ public class UserController {
     return service.getByName(name);
   }
 
+  @GetMapping(value = "")
+  public UserDTO getByRegistrationAndPassword(
+          @RequestParam(name = "registration", defaultValue = "") String registration,
+          @RequestParam(name = "password", defaultValue = "") String password
+  ){
+    return service.getByRegistrationAndPassword(registration, password);
+  }
+
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseEntity<String> create (@RequestBody UserDTO userDTO){

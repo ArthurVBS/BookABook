@@ -16,12 +16,15 @@ public class UserDTO {
 
   private String name;
 
+  private String password;
+
   private String access;
 
   public UserDTO(User user){
     this.id = user.getId();
     this.registration = user.getRegistration();
     this.name = user.getName();
+    this.password = user.getPassword();
     this.access = user.getAccess();
   }
 

@@ -23,6 +23,7 @@ public class UserServiceImpl implements IUserService {
       User user = new User();
       user.setRegistration(userDTO.getRegistration());
       user.setName(userDTO.getName());
+      user.setPassword(userDTO.getPassword());
       user.setAccess(userDTO.getAccess());
       repository.save(user);
 
@@ -58,6 +59,16 @@ public class UserServiceImpl implements IUserService {
     }
 
     User result = repository.findByName(name);
+    return new UserDTO(result);
+  }
+
+  @Override
+  public UserDTO getByRegistrationAndPassword(String registration, String password) {
+    if(Objects.equals(registration, "") || Objects.equals(password, "") ){
+      throw new NotFoundException();
+    }
+
+    User result = repository.findByRegistrationAndPassword(registration, password);
     return new UserDTO(result);
   }
 }
