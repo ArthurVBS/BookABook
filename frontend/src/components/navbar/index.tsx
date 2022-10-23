@@ -11,6 +11,7 @@ const Navbar: React.FC = () => {
     <Container show={show}>
       <Link href="/">home</Link>
       <Link href="/login">login</Link>
+      <Link href="/my-books">my books</Link>
     </Container>
   )
 }

@@ -54,8 +54,6 @@ export const AuthContextProvider = ({ children }: authContextProps) => {
 
       Router.push('/')
     }
-
-    console.log('response', response)
   }
 
   const logout = () => {
