@@ -6,7 +6,11 @@ export const api = axios.create({
 })
 
 export const loginUser = async (registration: string, password: string) => {
-  return api
+  return await api
     .get(`/user?registration=${registration}&password=${password}`)
     .catch(err => null)
+}
+
+export const getBooksByUserId = async (user_id: number) => {
+  return await api.get(`/user/books/${user_id}`).catch(err => null)
 }
