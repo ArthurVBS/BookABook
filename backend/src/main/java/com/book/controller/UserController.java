@@ -1,5 +1,6 @@
 package com.book.controller;
 
+import com.book.dto.BookDTO;
 import com.book.dto.UserDTO;
 import com.book.exception.AlreadyExistsException;
 import com.book.exception.NotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -34,6 +36,11 @@ public class UserController {
   @GetMapping(value = "/name/{name}")
   public UserDTO getByName(@PathVariable String name){
     return service.getByName(name);
+  }
+
+  @GetMapping(value = "/books/{user_id}")
+  public List<BookDTO> getBooksByUserId(@PathVariable Long user_id){
+    return service.getBooksByUserId(user_id);
   }
 
   @GetMapping(value = "")

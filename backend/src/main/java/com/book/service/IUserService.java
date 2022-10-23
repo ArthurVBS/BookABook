@@ -1,6 +1,10 @@
 package com.book.service;
 
+import com.book.dto.BookDTO;
 import com.book.dto.UserDTO;
+
+import java.util.List;
+
 
 public interface IUserService {
 
@@ -13,5 +17,7 @@ public interface IUserService {
   UserDTO getByName(String name);
 
   UserDTO getByRegistrationAndPassword(String registration, String password);
+
+  List<BookDTO> getBooksByUserId(Long user_id);
 
 }
