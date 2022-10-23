@@ -3,12 +3,12 @@ import { Container, Image } from './styles'
 
 import Form from './form'
 import RedirectMessage from './redirectMessage'
-import { useAuth } from '../../contexts/auth-context'
+import { initialUser, useAuth } from '../../contexts/auth-context'
 import { UserType } from '../../types/user'
 
 const LoginPageContent: React.FC = () => {
   const { user } = useAuth()
-  const [userState, setUserState] = useState<UserType>({})
+  const [userState, setUserState] = useState<UserType>(initialUser)
 
   // Next.js
   useEffect(() => {

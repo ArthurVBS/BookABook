@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from './styles'
 
-import { useAuth } from '../../contexts/auth-context'
+import { initialUser, useAuth } from '../../contexts/auth-context'
 import { UserType } from '../../types/user'
 
 const MyBooksPageContent: React.FC = () => {
   const { user } = useAuth()
-  const [userState, setUserState] = useState<UserType>({})
+  const [userState, setUserState] = useState<UserType>(initialUser)
 
+  // Next.js
   useEffect(() => {
     setUserState(user)
   }, [])

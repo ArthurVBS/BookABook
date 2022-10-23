@@ -5,14 +5,6 @@ import usePersistedState from '../utils/usePersistedState'
 import { loginUser } from '../services/api'
 import { UserType } from '../types/user'
 
-interface IUserData {
-  id: number
-  registration: string
-  name: string
-  password: string
-  access: string
-}
-
 type authContextType = {
   user: UserType
   login: (registration: string, password: string) => any
@@ -23,8 +15,16 @@ type authContextProps = {
   children: ReactNode
 }
 
+export const initialUser = {
+  id: 0,
+  registration: '',
+  name: '',
+  password: '',
+  access: 'None',
+} as UserType
+
 const initialValue = {
-  user: {},
+  user: initialUser,
   login: (registration: string, password: string) => {},
   logout: () => {},
 }
@@ -43,12 +43,13 @@ export const AuthContextProvider = ({ children }: authContextProps) => {
     response?.status === 200 && (isAuthenticated = true)
 
     if (isAuthenticated) {
-      const userData: IUserData = response?.data
+      const userData: UserType = response?.data
 
       setUser({
         id: userData.id,
         registration: userData.registration,
         name: userData.name,
+        password: userData.password,
         access: userData.access,
       })
 
@@ -57,7 +58,7 @@ export const AuthContextProvider = ({ children }: authContextProps) => {
   }
 
   const logout = () => {
-    setUser({})
+    setUser(initialValue.user)
   }
 
   return (

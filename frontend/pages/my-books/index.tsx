@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
-
 import { useState, useEffect } from 'react'
-import { useAuth } from '../../src/contexts/auth-context'
 import { UserType } from '../../src/types/user'
+import { initialUser, useAuth } from '../../src/contexts/auth-context'
 
 import Head from '../../src/components/head'
 import Header from '../../src/components/header'
@@ -12,12 +11,14 @@ import MyBooksPageContent from '../../src/pages/my-books'
 
 const MyBooks: NextPage = () => {
   const { user } = useAuth()
-  const [userState, setUserState] = useState<UserType>({})
-  const accessRequired = 'Student'
+  const [userState, setUserState] = useState<UserType>(initialUser)
 
+  // Next.js
   useEffect(() => {
     setUserState(user)
   }, [])
+
+  const accessRequired = 'Student'
 
   return (
     <>
