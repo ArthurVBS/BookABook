@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Container, Title } from './styles'
 
-import Field from '../field'
+import Field from '../../../components/field'
 import { useAuth } from '../../../contexts/auth-context'
 
 const Form: React.FC = () => {
