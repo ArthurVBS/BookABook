@@ -18,6 +18,7 @@ const Field: React.FC<Props> = ({ state, setState, type, placeholder }) => {
       required
       value={state}
       type={type}
+      min={5}
       placeholder={placeholder}
       onChange={e => handleChange(e)}
     />

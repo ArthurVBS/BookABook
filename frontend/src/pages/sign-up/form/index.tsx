@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Field from '../../../components/field'
 import Radio from '../../../components/radio'
+import { createUser } from '../../../services/api'
 import { AccessType } from '../../../types/user'
 import { Container, Title, Button } from './styles'
 
@@ -10,8 +11,26 @@ const Form: React.FC = () => {
   const [password, setPassword] = useState('')
   const [access, setAccess] = useState<AccessType>('Student')
 
+  const addUser = async () => {
+    const response = await createUser(registration, name, password, access)
+
+    if (response?.status === 200) {
+      setName('')
+      setRegistration('')
+      setPassword('')
+      setAccess('Student')
+
+      alert('User created')
+    } else {
+      alert('User already exists')
+    }
+
+    console.log(response)
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    addUser()
   }
 
   const accessOptions = ['Student', 'Librarian'] as AccessType[]
