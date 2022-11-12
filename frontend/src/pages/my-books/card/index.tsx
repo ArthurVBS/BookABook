@@ -1,19 +1,24 @@
 import React from 'react'
+
+import { AppointmentType } from '../../../types/appointment'
 import { BookType } from '../../../types/book'
+import { Container, Details, Subtitle, Title, Year } from './styles'
 
 type Props = {
   book: BookType
+  appointment?: AppointmentType
 }
 
-const Card: React.FC<Props> = ({ book }) => {
+const Card: React.FC<Props> = ({ book, appointment }) => {
   return (
-    <div>
-      <hr />
-      <h3>{book.name}</h3>
-      <p>{book.author}</p>
-      <p>{book.genre}</p>
-      <p>{book.year}</p>
-    </div>
+    <Container>
+      <Title>{book.name}</Title>
+      <Subtitle>{book.author}</Subtitle>
+      <Details>{book.genre}</Details>
+      <Year>{book.year}</Year>
+      <p>Starts at: {appointment?.startsAt.toString()}</p>
+      <p>Ends at: {appointment?.endsAt.toString()}</p>
+    </Container>
   )
 }
 
